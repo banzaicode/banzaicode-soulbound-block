@@ -1,0 +1,28 @@
+# IntelliJ IDEA
+.idea/
+*.iml
+out/
+
+# Gradle
+.gradle/
+build/
+
+# Logs
+*.log
+
+# Run config
+run/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Minecraft related
+eula.txt
+
+# Backup files
+*.bak
+*.swp
+
+# Forge dev workspace cache
+remappedSrc/
