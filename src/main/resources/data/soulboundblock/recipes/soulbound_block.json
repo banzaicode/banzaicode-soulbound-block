@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CIC",
+    "ISI",
+    "CIC"
+  ],
+  "key": {
+    "C": { "item": "minecraft:coal" },
+    "I": { "item": "minecraft:iron_ingot" },
+    "S": { "item": "minecraft:stone" }
+  },
+  "result": {
+    "item": "soulboundblock:soulbound_block",
+    "count": 1
+  }
+}
