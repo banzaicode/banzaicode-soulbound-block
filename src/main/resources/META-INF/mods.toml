@@ -1,0 +1,10 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="MIT"
+
+[[mods]]
+modId="soulboundblock"
+version="1.0.0"
+displayName="Soulbound Block"
+description='''Bloque personalizado que solo puede romper el jugador que lo colocó y requiere nivel 20 para craftear.'''
+authors="Banzaicode"
