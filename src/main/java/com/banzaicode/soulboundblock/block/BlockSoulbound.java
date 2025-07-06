@@ -1,22 +1,18 @@
 package com.banzaicode.soulboundblock.block;
 
+import com.banzaicode.soulboundblock.registry.ModBlockEntities;
 import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.BlockHitResult;
-import org.jetbrains.annotations.Nullable;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 
 import java.util.UUID;
 
@@ -30,27 +26,33 @@ public class BlockSoulbound extends Block {
     public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean isMoving) {
         super.onPlace(state, level, pos, oldState, isMoving);
         if (!level.isClientSide) {
-            BlockEntitySoulbound be = new BlockEntitySoulbound(pos, state);
-            be.setOwner(level.getServer().getPlayerList().getPlayers().stream()
-                .filter(p -> p.blockPosition().closerThan(pos, 2))
-                .findFirst()
-                .map(ServerPlayer::getUUID)
-                .orElse(null));
-            level.setBlockEntity(be);
+            BlockEntity blockEntity = level.getBlockEntity(pos);
+            if (blockEntity instanceof BlockEntitySoulbound soulbound) {
+                // Obtiene el jugador que lo colocó (por proximidad simple)
+                ServerPlayer owner = level.getServer().getPlayerList().getPlayers().stream()
+                        .filter(p -> p.blockPosition().closerThan(pos, 2))
+                        .findFirst()
+                        .orElse(null);
+                if (owner != null) {
+                    soulbound.setOwner(owner.getUUID());
+                }
+            }
         }
     }
 
     @Override
     public void playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
-        BlockEntity be = level.getBlockEntity(pos);
-        if (be instanceof BlockEntitySoulbound soulbound) {
-            if (!player.getUUID().equals(soulbound.getOwner())) {
-                if (!level.isClientSide) {
-                    player.sendSystemMessage(net.minecraft.network.chat.Component.literal("No sos el dueño de este bloque."));
+        if (!level.isClientSide) {
+            BlockEntity blockEntity = level.getBlockEntity(pos);
+            if (blockEntity instanceof BlockEntitySoulbound soulbound) {
+                UUID owner = soulbound.getOwner();
+                if (owner != null && !player.getUUID().equals(owner)) {
+                    // No sos el dueño → no te deja romperlo
+                    player.sendSystemMessage(
+                            net.minecraft.network.chat.Component.literal("No sos el dueño de este bloque."));
+                    level.setBlock(pos, state, 3); // Cancela destrucción
+                    return;
                 }
-                // Cancelar destrucción
-                level.setBlock(pos, state, 3); // Restaura el bloque
-                return;
             }
         }
         super.playerWillDestroy(level, pos, state, player);
@@ -61,7 +63,6 @@ public class BlockSoulbound extends Block {
         return true;
     }
 
-    @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return new BlockEntitySoulbound(pos, state);

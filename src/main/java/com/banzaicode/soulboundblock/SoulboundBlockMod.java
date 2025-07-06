@@ -2,6 +2,7 @@ package com.banzaicode.soulboundblock;
 
 import com.banzaicode.soulboundblock.registry.ModBlocks;
 import com.banzaicode.soulboundblock.registry.ModItems;
+import com.banzaicode.soulboundblock.registry.ModBlockEntities;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;

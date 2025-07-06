@@ -1,11 +1,10 @@
 package com.banzaicode.soulboundblock.block;
 
+import com.banzaicode.soulboundblock.registry.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.registries.ObjectHolder;
 
 import java.util.UUID;
 
@@ -29,12 +28,16 @@ public class BlockEntitySoulbound extends BlockEntity {
     @Override
     protected void saveAdditional(CompoundTag tag) {
         super.saveAdditional(tag);
-        if (owner != null) tag.putUUID("owner", owner);
+        if (owner != null) {
+            tag.putUUID("owner", owner);
+        }
     }
 
     @Override
     public void load(CompoundTag tag) {
         super.load(tag);
-        if (tag.hasUUID("owner")) owner = tag.getUUID("owner");
+        if (tag.hasUUID("owner")) {
+            owner = tag.getUUID("owner");
+        }
     }
 }

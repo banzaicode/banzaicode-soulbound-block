@@ -1,26 +1,26 @@
 # Soulbound Block Mod
 
-Este es un mod para Minecraft 1.20.1 que agrega un bloque especial llamado **Soulbound Block**.
+Mod de Minecraft creado por Banzaicode 🚀
 
-## Características
+## Descripción
 
-- 🧱 Solo puede romperlo el jugador que lo colocó.
-- 🔐 Se guarda el UUID del colocador.
-- 🛠️ Se craftea con 9 lingotes de hierro.
-- 📈 El jugador debe tener al menos nivel 20 de experiencia para craftearlo.
+Agrega un bloque especial llamado **Soulbound Block**:
 
-## Instalación para desarrollo
+- Solo puede ser destruido por el jugador que lo colocó.
+- Guarda internamente el dueño del bloque.
+- Requiere receta de crafteo personalizada.
+- Compatible con Minecraft 1.20.1 (Forge 47.2.0).
 
-1. Instalá JDK 17
-2. Abrí este proyecto con IntelliJ IDEA como proyecto Gradle
-3. Ejecutá `genIntellijRuns` para generar configuraciones de ejecución:
+> Esta es la primera versión funcional del mod. Próximamente se incluirán nuevas funcionalidades como restricciones de crafteo por nivel de experiencia.
+
+---
+
+## Cómo compilar
+
+Este proyecto está preparado para ser compilado dentro de un **DevContainer con Docker**.
+
+### 1️⃣ Clonar el repositorio:
 
 ```bash
-./gradlew genIntellijRuns
-```
-
-4. Usá `runClient` para iniciar Minecraft con el mod cargado.
-
-## Créditos
-
-Creado por Hernán Rocca – [banzaicode](https://github.com/banzaicode)
+git clone https://github.com/banzaicode/banzaicode-soulbound-block.git
+cd banzaicode-soulbound-block

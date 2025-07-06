@@ -1,28 +1,26 @@
-# IntelliJ IDEA
-.idea/
-*.iml
-out/
-
 # Gradle
 .gradle/
 build/
+out/
 
-# Logs
-*.log
+# IntelliJ
+.idea/
+*.iml
 
-# Run config
-run/
+# VSCode
+.vscode/
 
-# OS
+# Sistema operativo
 .DS_Store
 Thumbs.db
 
-# Minecraft related
-eula.txt
+# Logs
+*.log
 
 # Backup files
 *.bak
 *.swp
 
-# Forge dev workspace cache
+# Minecraft Forge workspace
+run/
 remappedSrc/
