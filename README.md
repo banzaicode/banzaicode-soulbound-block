@@ -1,26 +1,33 @@
 # Soulbound Block Mod
 
-Mod de Minecraft creado por Banzaicode 🚀
+Este es mi mod de Minecraft creado en Forge 1.20.1. Añade el bloque "Soulbound Block", el cual solo puede ser destruido por quien lo colocó.
 
-## Descripción
+## Requisitos
 
-Agrega un bloque especial llamado **Soulbound Block**:
+- Java 17
+- Gradle 7.6
 
-- Solo puede ser destruido por el jugador que lo colocó.
-- Guarda internamente el dueño del bloque.
-- Requiere receta de crafteo personalizada.
-- Compatible con Minecraft 1.20.1 (Forge 47.2.0).
-
-> Esta es la primera versión funcional del mod. Próximamente se incluirán nuevas funcionalidades como restricciones de crafteo por nivel de experiencia.
-
----
-
-## Cómo compilar
-
-Este proyecto está preparado para ser compilado dentro de un **DevContainer con Docker**.
-
-### 1️⃣ Clonar el repositorio:
+## ¿Cómo clonar el repositorio?
 
 ```bash
 git clone https://github.com/banzaicode/banzaicode-soulbound-block.git
 cd banzaicode-soulbound-block
+```
+
+## Abrir en VS Code con DevContainer
+
+Con VS Code instalado, abre la carpeta del repositorio y selecciona **Reopen in Container** para iniciar el DevContainer provisto. Allí ya tendrás Java 17 y Gradle configurados.
+
+## Compilar el mod
+
+Dentro del contenedor ejecuta:
+
+```bash
+./gradlew build
+```
+
+El artefacto final se genera en `build/libs/`. Copia el `.jar` resultante al directorio `mods` de tu servidor de Minecraft.
+
+## Pruebas rápidas en el DevContainer
+
+Para realizar pruebas locales rápidas, usa el DevContainer: compila con el comando anterior y luego prueba el jar en un entorno de servidor local o cliente que tenga Forge 1.20.1.
