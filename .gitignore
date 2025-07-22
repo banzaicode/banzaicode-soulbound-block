@@ -2,6 +2,7 @@
 .gradle/
 build/
 out/
+dist/
 
 # IntelliJ
 .idea/

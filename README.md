@@ -27,7 +27,7 @@ Dentro del contenedor ejecuta:
 ./gradlew build
 ```
 
-El artefacto final se genera en `build/libs/`. Copia el `.jar` resultante al directorio `mods` de tu servidor de Minecraft.
+El artefacto final se genera en `dist/`. Copia el `.jar` resultante al directorio `mods` de tu servidor de Minecraft.
 
 ## Pruebas rápidas en el DevContainer
 
@@ -38,7 +38,7 @@ Para realizar pruebas locales rápidas, usa el DevContainer: compila con el coma
 Este mod requiere un servidor de Minecraft 1.20.1 con Forge 47.2.0 y Java 17.
 
 1. Descarga la versión del servidor de Forge para 1.20.1 (por ejemplo `forge-1.20.1-47.2.0`).
-2. Copia el `.jar` generado en `build/libs/` dentro de la carpeta `mods/` del servidor.
+2. Copia el `.jar` generado en `dist/` dentro de la carpeta `mods/` del servidor.
 3. Inicia el servidor con:
 
 ```bash

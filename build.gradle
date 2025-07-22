@@ -30,3 +30,14 @@ tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
     options.release = 17
 }
+
+// Copiar el JAR generado a la carpeta dist/
+task copyToDist(type: Copy) {
+    from("${buildDir}/libs")
+    into("${rootDir}/dist")
+    include('*.jar')
+}
+
+// Ejecutar copyToDist cuando finalice la tarea build
+build.finalizedBy(copyToDist)
+
