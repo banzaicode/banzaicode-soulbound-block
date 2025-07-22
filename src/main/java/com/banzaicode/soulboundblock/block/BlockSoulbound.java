@@ -16,12 +16,23 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 
 import java.util.UUID;
 
+/**
+ * Bloque que queda "vinculado" al alma del jugador que lo coloca. Solo su dueño
+ * podrá romperlo posteriormente.
+ */
 public class BlockSoulbound extends Block {
 
+    /**
+     * Constructor que simplemente delega la configuración del bloque.
+     */
     public BlockSoulbound(Properties properties) {
         super(properties);
     }
 
+    /**
+     * Cuando se coloca el bloque se almacena el UUID del jugador más cercano
+     * para dejarlo como dueño.
+     */
     @Override
     public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean isMoving) {
         super.onPlace(state, level, pos, oldState, isMoving);
@@ -40,6 +51,10 @@ public class BlockSoulbound extends Block {
         }
     }
 
+    /**
+     * Evita que un jugador distinto al dueño destruya el bloque. Si no es el
+     * dueño se cancela la destrucción y se muestra un mensaje.
+     */
     @Override
     public void playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
         if (!level.isClientSide) {
@@ -58,11 +73,18 @@ public class BlockSoulbound extends Block {
         super.playerWillDestroy(level, pos, state, player);
     }
 
+    /**
+     * Indica que el bloque tiene una entidad asociada para guardar datos.
+     */
     @Override
     public boolean hasBlockEntity(BlockState state) {
         return true;
     }
 
+    /**
+     * Crea una instancia de la entidad de bloque encargada de almacenar el
+     * propietario.
+     */
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return new BlockEntitySoulbound(pos, state);

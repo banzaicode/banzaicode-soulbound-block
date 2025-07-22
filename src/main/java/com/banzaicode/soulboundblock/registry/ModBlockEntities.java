@@ -9,6 +9,9 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
+/**
+ * Registro de las entidades de bloque utilizadas para el bloque soulbound.
+ */
 public class ModBlockEntities {
 
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES =
@@ -21,6 +24,9 @@ public class ModBlockEntities {
                             ModBlocks.SOULBOUND_BLOCK.get()
                     ).build(null));
 
+    /**
+     * Registra las entidades de bloque en el bus de eventos de Forge.
+     */
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);
     }
