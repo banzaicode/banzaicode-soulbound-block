@@ -1,6 +1,7 @@
 # Soulbound Block Mod
 
 Este es mi mod de Minecraft creado en Forge 1.20.1. Añade el bloque "Soulbound Block", el cual solo puede ser destruido por quien lo colocó.
+Para más detalles sobre el entorno y la compilación revisa la [guía completa](docs/README.md).
 
 ## Requisitos
 
