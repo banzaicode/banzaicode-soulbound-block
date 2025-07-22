@@ -45,3 +45,10 @@ Este mod requiere un servidor de Minecraft 1.20.1 con Forge 47.2.0 y Java 17.
 ```bash
 java -jar forge-1.20.1-47.2.0.jar nogui
 ```
+
+## Solución de problemas
+
+- **Versión incorrecta de Forge**: asegúrate de usar la versión 1.20.1 de Forge (47.2.0). Si utilizas otra versión el mod puede no cargar. Descarga la versión adecuada desde el sitio oficial de Forge e instálala nuevamente.
+- **No estás usando Java 17**: la compilación y ejecución requieren Java 17. Instala JDK 17 o abre el proyecto en el DevContainer donde ya está incluido.
+- **Gradle ejecutado fuera del DevContainer**: si corres `./gradlew` fuera del contenedor puedes tener dependencias faltantes o la versión de Java incorrecta. Abre el repositorio con **Reopen in Container** y ejecuta los comandos allí.
+
