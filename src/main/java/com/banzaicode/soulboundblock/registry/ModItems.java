@@ -4,7 +4,7 @@ import com.banzaicode.soulboundblock.SoulboundBlockMod;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.event.CreativeModeTabEvent;
+import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -40,7 +40,7 @@ public class ModItems {
      * Añade el ítem a la pestaña de bloques de construcción en el modo creativo.
      */
     @SubscribeEvent
-    public static void onCreativeTabBuild(CreativeModeTabEvent.BuildContents event) {
+    public static void onCreativeTabBuild(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
             event.accept(SOULBOUND_BLOCK_ITEM);
         }

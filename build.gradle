@@ -1,12 +1,12 @@
 plugins {
-    id 'net.minecraftforge.gradle' version '5.1.+'
+    id 'net.minecraftforge.gradle' version '6.+'
 }
 group = 'com.banzaicode'
 version = '1.0.0'
 archivesBaseName = 'soulboundblock'
-java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 minecraft {
-    mappings channel: 'official', version: '1.20.1'
+    mappings channel: 'official', version: '1.21.8'
     runs {
         client {
             workingDirectory project.file('run')
@@ -24,11 +24,11 @@ repositories {
     maven { url = 'https://maven.minecraftforge.net/' }
 }
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.20.1-47.2.0'
+    minecraft 'net.minecraftforge:forge:1.21.8-58.0.0'
 }
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
-    options.release = 17
+    options.release = 21
 }
 
 // Copiar el JAR generado a la carpeta dist/
