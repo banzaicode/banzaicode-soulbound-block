@@ -20,6 +20,10 @@ cd banzaicode-soulbound-block
 
 Con VS Code instalado, abre la carpeta del repositorio y selecciona **Reopen in Container** para iniciar el DevContainer provisto. Allí ya tendrás Java 21 y Gradle configurados.
 
+## Compartir configuración de Git
+
+El contenedor monta de forma opcional tu archivo `~/.gitconfig` y la carpeta `~/.ssh` para reutilizar tu configuración personal. Si no tienes un usuario configurado, se aplicarán por defecto `Tu Nombre` y `tu@ejemplo.com` al crear el contenedor.
+
 ## Compilar el mod
 
 Dentro del contenedor ejecuta:

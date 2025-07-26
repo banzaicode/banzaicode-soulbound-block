@@ -18,5 +18,10 @@
     "vscjava.vscode-gradle",
     "redhat.java"
   ],
+  "mounts": [
+    "source=${localEnv:HOME}/.gitconfig,target=/root/.gitconfig,type=bind,consistency=cached",
+    "source=${localEnv:HOME}/.ssh,target=/root/.ssh,type=bind,consistency=cached"
+  ],
+  "postCreateCommand": "git config --get user.name >/dev/null || git config --global user.name \"Tu Nombre\" && git config --global user.email \"tu@ejemplo.com\"",
   "remoteUser": "root"
 }
