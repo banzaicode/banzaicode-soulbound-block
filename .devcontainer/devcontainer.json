@@ -7,7 +7,7 @@
     "java.jdt.ls.java.home": "/docker-java-home",
     "java.configuration.runtimes": [
       {
-        "name": "JavaSE-17",
+        "name": "JavaSE-21",
         "path": "/docker-java-home",
         "default": true
       }

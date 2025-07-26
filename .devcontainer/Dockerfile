@@ -1,4 +1,4 @@
-FROM openjdk:17-jdk-slim
+FROM openjdk:21-jdk-slim
 
 # Instalar herramientas básicas
 RUN apt-get update && apt-get install -y wget unzip git nano
