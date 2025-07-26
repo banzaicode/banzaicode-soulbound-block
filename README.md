@@ -52,3 +52,7 @@ java -jar forge-1.21.8-58.0.0.jar nogui
 - **No estás usando Java 21**: la compilación y ejecución requieren Java 21. Instala JDK 21 o abre el proyecto en el DevContainer donde ya está incluido.
 - **Gradle ejecutado fuera del DevContainer**: si corres `./gradlew` fuera del contenedor puedes tener dependencias faltantes o la versión de Java incorrecta. Abre el repositorio con **Reopen in Container** y ejecuta los comandos allí.
 
+
+## Licencia
+
+Este proyecto se distribuye bajo la licencia MIT. Consulta el archivo [LICENSE](LICENSE) para más información.
