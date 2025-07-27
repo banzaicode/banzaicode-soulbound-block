@@ -19,7 +19,9 @@ import java.util.UUID;
  * Bloque que queda "vinculado" al alma del jugador que lo coloca. Solo su dueño
  * podrá romperlo posteriormente.
  */
-public class BlockSoulbound extends Block {
+import net.minecraft.world.level.block.EntityBlock;
+
+public class BlockSoulbound extends Block implements EntityBlock {
 
     /**
      * Constructor que simplemente delega la configuración del bloque.
@@ -55,34 +57,27 @@ public class BlockSoulbound extends Block {
      * dueño se cancela la destrucción y se muestra un mensaje.
      */
     @Override
-    public void playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
+    public BlockState playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
         if (!level.isClientSide) {
             BlockEntity blockEntity = level.getBlockEntity(pos);
             if (blockEntity instanceof BlockEntitySoulbound soulbound) {
                 UUID owner = soulbound.getOwner();
                 if (owner != null && !player.getUUID().equals(owner)) {
                     // No sos el dueño → no te deja romperlo
-                    player.sendSystemMessage(
-                            net.minecraft.network.chat.Component.literal("No sos el dueño de este bloque."));
+                    if (player instanceof ServerPlayer serverPlayer) {
+                        serverPlayer.sendSystemMessage(
+                                net.minecraft.network.chat.Component.literal("No sos el dueño de este bloque."));
+                    }
                     level.setBlock(pos, state, 3); // Cancela destrucción
-                    return;
+                    return state;
                 }
             }
         }
-        super.playerWillDestroy(level, pos, state, player);
+        return super.playerWillDestroy(level, pos, state, player);
     }
 
     /**
      * Indica que el bloque tiene una entidad asociada para guardar datos.
-     */
-    @Override
-    public boolean hasBlockEntity(BlockState state) {
-        return true;
-    }
-
-    /**
-     * Crea una instancia de la entidad de bloque encargada de almacenar el
-     * propietario.
      */
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {

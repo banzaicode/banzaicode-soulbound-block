@@ -7,7 +7,7 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
-import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.bus.BusGroup;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -34,7 +34,7 @@ public class ModBlocks {
     /**
      * Registra los bloques en el bus de eventos de Forge.
      */
-    public static void register(IEventBus eventBus) {
-        BLOCKS.register(eventBus);
+    public static void register(BusGroup modBus) {
+        BLOCKS.register(modBus);
     }
 }

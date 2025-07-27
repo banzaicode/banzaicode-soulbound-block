@@ -4,7 +4,8 @@ import com.banzaicode.soulboundblock.SoulboundBlockMod;
 import com.banzaicode.soulboundblock.block.BlockEntitySoulbound;
 import com.banzaicode.soulboundblock.registry.ModBlocks;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraftforge.eventbus.api.IEventBus;
+import java.util.Set;
+import net.minecraftforge.eventbus.api.bus.BusGroup;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -19,15 +20,14 @@ public class ModBlockEntities {
 
     public static final RegistryObject<BlockEntityType<BlockEntitySoulbound>> SOULBOUND_BLOCK_ENTITY =
             BLOCK_ENTITIES.register("soulbound_block_entity",
-                    () -> BlockEntityType.Builder.of(
+                    () -> new BlockEntityType<>(
                             BlockEntitySoulbound::new,
-                            ModBlocks.SOULBOUND_BLOCK.get()
-                    ).build(null));
+                            Set.of(ModBlocks.SOULBOUND_BLOCK.get())));
 
     /**
      * Registra las entidades de bloque en el bus de eventos de Forge.
      */
-    public static void register(IEventBus eventBus) {
-        BLOCK_ENTITIES.register(eventBus);
+    public static void register(BusGroup modBus) {
+        BLOCK_ENTITIES.register(modBus);
     }
 }

@@ -2,9 +2,11 @@ package com.banzaicode.soulboundblock.block;
 
 import com.banzaicode.soulboundblock.registry.ModBlockEntities;
 import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.core.UUIDUtil;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 
 import java.util.UUID;
 
@@ -42,10 +44,10 @@ public class BlockEntitySoulbound extends BlockEntity {
      * Guarda el UUID del dueño en el NBT para persistirlo.
      */
     @Override
-    protected void saveAdditional(CompoundTag tag) {
-        super.saveAdditional(tag);
+    protected void saveAdditional(ValueOutput output) {
+        super.saveAdditional(output);
         if (owner != null) {
-            tag.putUUID("owner", owner);
+            output.store("owner", UUIDUtil.CODEC, owner);
         }
     }
 
@@ -53,10 +55,8 @@ public class BlockEntitySoulbound extends BlockEntity {
      * Carga el UUID del dueño desde el NBT al aparecer el bloque en el mundo.
      */
     @Override
-    public void load(CompoundTag tag) {
-        super.load(tag);
-        if (tag.hasUUID("owner")) {
-            owner = tag.getUUID("owner");
-        }
+    protected void loadAdditional(ValueInput input) {
+        super.loadAdditional(input);
+        input.read("owner", UUIDUtil.CODEC).ifPresent(uuid -> owner = uuid);
     }
 }
