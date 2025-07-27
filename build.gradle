@@ -1,5 +1,7 @@
 plugins {
-    id 'net.minecraftforge.gradle' version '6.+'
+    // ForgeGradle version explicitly pinned for Forge 1.21.8 projects
+    // Update when Forge recommends a newer plugin release
+    id 'net.minecraftforge.gradle' version '6.0.36'
 }
 group = 'com.banzaicode'
 version = '1.0.0'
