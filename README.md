@@ -6,7 +6,7 @@ Para más detalles sobre el entorno y la compilación revisa la [guía completa]
 ## Requisitos
 
 - Java 21
-- Gradle 7.6
+- Gradle 8.4
 - Servidor de Minecraft 1.21.8 con Forge 58.0.0
 
 ## ¿Cómo clonar el repositorio?
