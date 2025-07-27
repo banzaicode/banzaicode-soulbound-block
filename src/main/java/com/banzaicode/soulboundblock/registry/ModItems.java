@@ -5,8 +5,8 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.eventbus.api.bus.BusGroup;
+import net.minecraftforge.eventbus.api.listener.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -32,8 +32,8 @@ public class ModItems {
     /**
      * Registra los ítems en el bus de eventos de Forge.
      */
-    public static void register(IEventBus eventBus) {
-        ITEMS.register(eventBus);
+    public static void register(BusGroup modBus) {
+        ITEMS.register(modBus);
     }
 
     /**

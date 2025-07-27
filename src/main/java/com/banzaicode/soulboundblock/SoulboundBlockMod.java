@@ -4,7 +4,7 @@ import com.banzaicode.soulboundblock.registry.ModBlocks;
 import com.banzaicode.soulboundblock.registry.ModItems;
 import com.banzaicode.soulboundblock.registry.ModBlockEntities;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.bus.BusGroup;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 /**
@@ -20,10 +20,10 @@ public class SoulboundBlockMod {
      * asociados al mod.
      */
     public SoulboundBlockMod() {
-        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        BusGroup modBus = FMLJavaModLoadingContext.get().getModBusGroup();
 
-        ModBlocks.register(modEventBus);
-        ModItems.register(modEventBus);
-        ModBlockEntities.register(modEventBus);
+        ModBlocks.register(modBus);
+        ModItems.register(modBus);
+        ModBlockEntities.register(modBus);
     }
 }
